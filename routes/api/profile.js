@@ -6,6 +6,14 @@ const User = require("../../models/User");
 const { check, validationResult } = require("express-validator");
 const request = require("request");
 const config = require("config");
+const nodemailer = require("nodemailer");
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "jamestang@kyand.co",
+    pass: "@Ht1113359",
+  },
+});
 
 //@route    GET api/profile/me
 //@desc     Get current users profile
@@ -115,6 +123,23 @@ router.get("/", async (req, res) => {
     console.log(error);
     res.status(500).send("Server Error");
   }
+});
+
+router.post("/sendMail", async (req, res) => {
+  const mailOptions = {
+    from: "jamestang@kyand.co",
+    to: "jameskibi@gmail.com",
+    subject: `Testing`,
+    html: "<h1>Hello</h1>",
+  };
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      console.log(err);
+      res.json(err);
+    }
+  });
+
+  res.json("yes");
 });
 
 //@route    GET api/profile/user/:user_id
