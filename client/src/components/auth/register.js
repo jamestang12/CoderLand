@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../action/alert";
+import { register } from "../../action/auth";
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,11 +38,16 @@ const Register = ({ setAlert }) => {
       //   } catch (error) {
       //     console.log(error.response.data);
       //   }
+      register({ name, email, password });
     }
   };
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashnoard" />;
+  }
 
   return (
     <Fragment>
@@ -62,7 +68,6 @@ const Register = ({ setAlert }) => {
             type="text"
             placeholder="Name"
             name="name"
-            required
           />
         </div>
         <div className="form-group">
@@ -85,7 +90,6 @@ const Register = ({ setAlert }) => {
             type="password"
             placeholder="Password"
             name="password"
-            minLength="6"
           />
         </div>
         <div className="form-group">
@@ -95,7 +99,6 @@ const Register = ({ setAlert }) => {
             type="password"
             placeholder="Confirm Password"
             name="password2"
-            minLength="6"
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
@@ -107,4 +110,8 @@ const Register = ({ setAlert }) => {
   );
 };
 
-export default connect(null, { setAlert })(Register);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);
