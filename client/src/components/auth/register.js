@@ -46,7 +46,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   if (isAuthenticated) {
-    return <Redirect to="/dashnoard" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
