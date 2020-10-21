@@ -10,3 +10,5 @@ export const LOGOUT = "LOGOUT";
 export const GET_PROGILE = "GET_PROGILE";
 export const CLEAR_PROGILE = "CLEAR_PROGILE";
 export const PROFILE_ERROR = "PROFILE_ERROR";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const DELETE_ACCOUNT = "DELETE_ACCOUNT";

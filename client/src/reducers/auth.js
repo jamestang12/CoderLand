@@ -6,6 +6,7 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
+  DELETE_ACCOUNT,
 } from "../action/type";
 
 const initialState = {
@@ -36,7 +37,7 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
       };
-
+    case DELETE_ACCOUNT:
     case LOGOUT:
     case LOGIN_FAIL:
     case AUTH_ERROR:

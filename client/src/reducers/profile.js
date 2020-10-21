@@ -1,4 +1,9 @@
-import { CLEAR_PROGILE, GET_PROGILE, PROFILE_ERROR } from "../action/type";
+import {
+  CLEAR_PROGILE,
+  GET_PROGILE,
+  PROFILE_ERROR,
+  UPDATE_PROFILE,
+} from "../action/type";
 
 const initialState = {
   profile: null,
@@ -13,11 +18,13 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case GET_PROGILE:
+    case UPDATE_PROFILE:
       return {
         ...state,
         profile: payload,
         loading: false,
       };
+
     case PROFILE_ERROR:
       return {
         ...state,
