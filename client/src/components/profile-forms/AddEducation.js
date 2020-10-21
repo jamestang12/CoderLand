@@ -125,4 +125,4 @@ const AddEducation = ({ addEdication, history }) => {
   );
 };
 
-export default connect(null, { addEdication })(AddEducation);
+export default connect(null, { addEdication })(withRouter(AddEducation));

@@ -30,7 +30,6 @@ const CreateProfile = ({ createProfile, history }) => {
 
   const {
     company,
-    website,
     location,
     status,
     skills,

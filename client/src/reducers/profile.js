@@ -3,6 +3,8 @@ import {
   GET_PROGILE,
   PROFILE_ERROR,
   UPDATE_PROFILE,
+  GET_PROGILES,
+  GET_REPOS,
 } from "../action/type";
 
 const initialState = {
@@ -31,11 +33,25 @@ export default function (state = initialState, action) {
         error: payload,
         loading: false,
       };
+
+    case GET_PROGILES:
+      return {
+        ...state,
+        profiles: payload,
+        loading: false,
+      };
+
     case CLEAR_PROGILE:
       return {
         ...state,
         profile: null,
         repos: [],
+        loading: false,
+      };
+    case GET_REPOS:
+      return {
+        ...state,
+        repos: payload,
         loading: false,
       };
     default:

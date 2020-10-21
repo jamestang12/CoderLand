@@ -11,7 +11,6 @@ import {
   CLEAR_PROGILE,
 } from "./type";
 import setAuthToken from "../utils/setAuthToken";
-import { Redirect } from "react-router-dom";
 
 //Load User
 export const loadUser = () => async (dispatch) => {
